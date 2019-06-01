@@ -1,6 +1,5 @@
 version: '3'
 services:
-
   app:
     image: flamov/flamov-portfolio:latest
     container_name: app
@@ -12,7 +11,6 @@ services:
     volumes:
       - certbot-webroot-flamov:/app/src/public/.well-known
       - certbot-letsencrypt:/etc/letsencrypt
-
   certbot:
     build: ./certbot
     container_name: certbot
