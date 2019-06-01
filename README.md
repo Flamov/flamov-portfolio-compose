@@ -6,7 +6,7 @@ Docker Compose files for my [portfolio website](https://github.com/Flamov/flamov
 
 1. Clone the repository
 2. Create a file in the root of the repository called `app-variables.env` and populate it with the appropriate environment variables ([more information here](https://github.com/Flamov/flamov-portfolio#installation))
-    * Initially set `NODE_ENV` to `development` for the app to run only with HTTP in order for certificate verification to work
+    * Set `NODE_ENV` to `development` for the app to run only with HTTP in order for certificate verification to work
 3. Run `docker-compose up -d` to start all services
 4. Start a command shell in the _certbot_ container by running `docker exec -it certbot bash` and run the following to generate a set of SSL certificate files (the same command can be found in [certbot/register](certbot/register)):
 
