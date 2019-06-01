@@ -10,7 +10,7 @@ Docker Compose files for my [portfolio website](https://github.com/Flamov/flamov
 3. Run `docker-compose up -d` to start all services
 4. Start a command shell in the _certbot_ container by running `docker exec -it certbot bash` and run the following to generate a set of SSL certificate files (the same command can be found in [certbot/register](certbot/register)):
 
-    ```/scripts/certbot-auto certonly --webroot -w /webroots/flamov.com -d flamov.com -d www.flamov.com```
+```/scripts/certbot-auto certonly --webroot -w /webroots/flamov.com -d flamov.com -d www.flamov.com```
 
 5. Exit the command shell (`exit`) and change `NODE_ENV` to `production` in the `app-variables.env` file
 6. Recreate and restart the app container by running `docker-compose up --no-deps -d app` so it picks up the new environment variables and runs with HTTPS using the newly created certificate files
