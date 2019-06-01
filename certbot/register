@@ -1,2 +1,2 @@
 #!/bin/sh
-/scripts/certbot-auto certonly --webroot -w /webroots/$1 -d $1
+/scripts/certbot-auto certonly --webroot -w /webroots/flamov.com -d flamov.com -d www.flamov.com

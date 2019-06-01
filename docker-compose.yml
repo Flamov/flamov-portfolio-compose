@@ -8,6 +8,8 @@ services:
       - "80:3000"
       - "443:443"
     restart: always
+    env_file:
+    - app-variables.env
     volumes:
       - certbot-webroot-flamov:/app/public/.well-known
       - certbot-letsencrypt:/etc/letsencrypt

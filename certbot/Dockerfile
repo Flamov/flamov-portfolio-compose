@@ -12,6 +12,7 @@ RUN /scripts/certbot-auto -n certificates
 VOLUME /webroots
 VOLUME /etc/letsencrypt
 
-RUN echo "00 05 * * 2,4,6,7 root /scripts/certbot-auto renew" > /etc/cron.d/certbot
+# Renew at 0300 every Monday
+RUN echo "0 3 * * 1 root /scripts/certbot-auto renew" > /etc/cron.d/certbot
 
 CMD ["cron", "-f"]
