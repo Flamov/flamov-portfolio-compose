@@ -1,24 +1,33 @@
-version: '3'
+version: "3"
+
 services:
   app:
     image: flamov/flamov-portfolio:latest
     container_name: app
-    ports:
-      - "80:3000"
-      - "443:443"
-    restart: always
+    expose:
+      - "3000"
+    restart: unless-stopped
     env_file: app-variables.env
+  nginx:
+    image: nginx:mainline-alpine
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     volumes:
-      - certbot-webroot-flamov:/app/src/public/.well-known
-      - certbot-letsencrypt:/etc/letsencrypt
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+    depends_on:
+      - app
+      - certbot
   certbot:
-    build: ./certbot
+    image: certbot/certbot
     container_name: certbot
-    restart: always
+    restart: unless-stopped
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
     volumes:
-      - certbot-webroot-flamov:/webroots/flamov.com/.well-known
-      - certbot-letsencrypt:/etc/letsencrypt
-
-volumes:
-  certbot-webroot-flamov:
-  certbot-letsencrypt:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
