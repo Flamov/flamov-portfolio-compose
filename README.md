@@ -6,7 +6,7 @@ Docker Compose files for my [portfolio website](https://github.com/Flamov/flamov
 
 1. Clone the repository
 2. Create a file in the root of the repository called `app-variables.env` and populate it with the appropriate environment variables ([more information here](https://github.com/Flamov/flamov-portfolio#installation))
-3. Run `chmod +x init-letsencrypt.sh` then `sudo ./init-letsencrypt.sh` to generate mock certificates (for nginx), start the services, then generate a new set of Let's Encrypt certificates (more info [here](https://medium.com/@pentacent/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71))
+3. Run `chmod +x init-certbot.sh` then `sudo ./init-certbot.sh` to generate mock certificates (for nginx), start the services, then generate a new set of Let's Encrypt certificates (more info [here](https://medium.com/@pentacent/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71))
 
 ## Updating the app container
 
