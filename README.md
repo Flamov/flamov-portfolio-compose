@@ -19,4 +19,4 @@ This can also be done in a single command as:
 
 ```docker-compose pull app && docker-compose up --no-deps -d app```
 
-More information [can be found here](https://docs.docker.com/compose/production/#deploying-changes). For the website, the image and container update is done by CircleCI: https://github.com/Flamov/flamov-portfolio/blob/master/.circleci/config.yml#L92-L94
+More information [can be found here](https://docs.docker.com/compose/production/#deploying-changes). For the website, the image and container update is done with CircleCI: https://github.com/Flamov/flamov-portfolio/blob/master/.circleci/config.yml#L92-L94
