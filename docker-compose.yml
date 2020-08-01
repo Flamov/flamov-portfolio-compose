@@ -13,8 +13,6 @@ services:
     container_name: app-test
     expose:
       - "3000"
-    environment:
-      - NODE_BASE_PATH=/test
     restart: unless-stopped
   nginx:
     image: nginx:mainline-alpine
