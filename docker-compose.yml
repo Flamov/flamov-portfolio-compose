@@ -9,6 +9,8 @@ services:
     restart: unless-stopped
     environment:
       - NODE_ENV=production
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://app-test:3000/status"]
   app-test:
     image: docker.pkg.github.com/flamov/portfolio/portfolio:test
     container_name: app-test
@@ -17,6 +19,8 @@ services:
     restart: unless-stopped
     environment:
       - NODE_ENV=test
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://app-test:3000/status"]
   nginx:
     image: nginx:mainline-alpine
     container_name: nginx
