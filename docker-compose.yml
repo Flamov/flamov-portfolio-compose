@@ -7,8 +7,7 @@ services:
     expose:
       - "3000"
     restart: unless-stopped
-    environment:
-      - NODE_ENV=production
+    env_file: app-variables.env
     healthcheck:
       test: ["CMD", "curl", "-f", "http://app-test:3000/status"]
   app-test:
