@@ -10,13 +10,11 @@ services:
     env_file: app-variables.env
 
   app-test:
-    image: docker.pkg.github.com/flamov/portfolio/portfolio:test
+    image: ghcr.io/flamov/portfolio:test
     container_name: app-test
     expose:
       - "3000"
     restart: unless-stopped
-    environment:
-      - NODE_ENV=test
 
   nginx:
     image: nginx:mainline-alpine
